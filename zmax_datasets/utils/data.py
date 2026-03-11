@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from datetime import timedelta
 from functools import cached_property
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 import numpy as np
 from loguru import logger
@@ -56,6 +56,8 @@ def _validate_sample_rate_match(objects: Sequence["Data"]) -> float:
                 f" Reference: {reference_sample_rate}, got: {obj.sample_rate}"
             )
     return reference_sample_rate
+
+
 
 
 @dataclass
@@ -600,3 +602,6 @@ def get_periods_by_index(
     period_indices = period_indices.reshape(n_periods, n_samples_per_period)
 
     return data.array[period_indices]
+
+
+
